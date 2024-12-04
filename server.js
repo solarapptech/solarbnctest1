@@ -26,7 +26,7 @@ app.get ('/info5', (req, res) =>{
     
         // const sendData5 = `data: ${JSON.stringify(tasabinance.trim()) +' Bs.'}\n\n`;
         // const sendData5 = `data: ${tasabinance + 'Bs.'}\n\n`;
-        const sendData5 = `data: ${JSON.stringify(bncv) +' Bs.'}\n\n`;
+        const sendData5 = `data: ${bncv +' Bs.'}\n\n`;
         res.write(sendData5);
         console.log(sendData5);
 })
