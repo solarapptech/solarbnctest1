@@ -6,6 +6,7 @@ server.keepAliveTimeout = 80000;
 server.headersTimeout = 81000;
 app.use(cors())
 
+const tasabinance = 0;
 
 const { spawn } = require('child_process');
 
@@ -13,7 +14,7 @@ const childPython = spawn('python',['apibnc.py']);
 
 childPython.stdout.on('data',(data)=>{
     // const tasabinance = data;
-    const tasabinance = `${data}`;
+    tasabinance = `${data}`;
 })
 
 
