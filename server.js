@@ -20,9 +20,9 @@ childPython.stdout.on('data',(data)=>{
     
         // const sendData5 = `data: ${JSON.stringify(tasabinance) +' Bs.'}\n\n`;
         // const sendData5 = 'data: ' + tasabinance +' Bs.';
-       const sendData5 = tasabinance;
-        res.write(sendData5);
-        console.log(sendData5);
+       const sendData5 = JSON.stringify(tasabinance);
+       res.write(sendData5);
+       console.log(sendData5);
     })
     
 })
