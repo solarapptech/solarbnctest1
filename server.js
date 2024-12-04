@@ -19,7 +19,8 @@ childPython.stdout.on('data',(data)=>{
         res.setHeader('Access-Control-Allow-Origin', '*')
     
         // const sendData5 = `data: ${JSON.stringify(tasabinance) +' Bs.'}\n\n`;
-        const sendData5 = 'data: ' + tasabinance +' Bs.';
+        // const sendData5 = 'data: ' + tasabinance +' Bs.';
+        const sendData5 = `data: ${tasabinance + 'Bs.'}`
         res.write(sendData5);
         console.log(sendData5);
     })
