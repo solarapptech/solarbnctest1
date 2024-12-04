@@ -14,7 +14,9 @@ childPython.stdout.on('data',(data)=>{
     // const tasabinance = data;
     const tasabinance = `${data}`;
 
-    app.get ('/info5', (req, res) =>{
+})
+
+app.get ('/info5', (req, res) =>{
         res.setHeader('Content-Type', 'text/event-stream')
         res.setHeader('Access-Control-Allow-Origin', '*')
     
@@ -24,8 +26,6 @@ childPython.stdout.on('data',(data)=>{
         // const sendData5 = tasabinance.trim();
         res.write(sendData5);
         console.log(sendData5);
-    })
-    
 })
 
 
