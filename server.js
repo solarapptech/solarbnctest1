@@ -12,7 +12,7 @@ const childPython = spawn('python',['apibnc.py']);
 
 childPython.stdout.on('data',(data)=>{
     // const tasabinance = data;
-    const tasabinance = `${data}`;
+    const tasabinance = `${JSON.stringify(data)}`;
 
     app.get ('/info5', (req, res) =>{
         res.setHeader('Content-Type', 'text/event-stream')
@@ -20,7 +20,7 @@ childPython.stdout.on('data',(data)=>{
     
         // const sendData5 = `data: ${JSON.stringify(tasabinance) +' Bs.'}\n\n`;
         // const sendData5 = 'data: ' + tasabinance +' Bs.';
-       const sendData5 = JSON.stringify(tasabinance);
+       const sendData5 = tasabinance;
        res.write(sendData5);
        console.log(sendData5);
     })
