@@ -20,7 +20,7 @@ childPython.stdout.on('data',(data)=>{
     
         // const sendData5 = `data: ${JSON.stringify(tasabinance) +' Bs.'}\n\n`;
         // const sendData5 = `data: ${tasabinance + 'Bs.'}\n\n`;
-        const sendData5 = `data: ${JSON.stringify(tasabinance) +' Bs.'}\n\n`;
+        const sendData5 = `data: ${tasabinance +' Bs.'}\n`;
         res.write(sendData5);
         console.log(sendData5);
     })
