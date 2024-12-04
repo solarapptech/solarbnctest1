@@ -22,10 +22,10 @@ app.get ('/info5', (req, res) =>{
         res.setHeader('Content-Type', 'text/event-stream')
         res.setHeader('Access-Control-Allow-Origin', '*')
     
-        const sendData5 = `data: ${JSON.stringify(tasabinance.trim()) +' Bs.'}\n\n`;
+        // const sendData5 = `data: ${JSON.stringify(tasabinance.trim()) +' Bs.'}\n\n`;
         // const sendData5 = `data: ${tasabinance + 'Bs.'}\n\n`;
         // const sendData5 = `data: ${tasabinance.trim() + ' Bs.'}`;
-        // const sendData5 = tasabinance.trim();
+        const sendData5 = tasabinance.trim();
         res.write(sendData5);
         console.log(sendData5);
 })
