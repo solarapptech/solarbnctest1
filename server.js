@@ -9,6 +9,9 @@ app.use(cors())
 let tasabinance = 0;
 let bncv = 0;
 
+let tasabcv = 0;
+let bcvt = 0;
+
 
 const moment = require('moment-timezone'); 
 require('moment/locale/es'); 
@@ -53,3 +56,23 @@ childPython.stderr.on('data',(data)=>{
 childPython.on('close',(code)=>{
     console.log(`Se ha cerrado con el codigo ${code}`);
 })
+
+
+
+const childPython2 = spawn('python',['bcvapi.py']);
+
+childPython2.stdout.on('data',(data)=>{
+    tasabcv = `${data}`;
+    bcvt = tasabcv.trim();
+    launchinfo2();
+})
+
+function launchinfo2(){
+    app.get ('/info1', (req, res) =>{
+        res.setHeader('Content-Type', 'text/event-stream')
+        res.setHeader('Access-Control-Allow-Origin', '*')
+    
+        const sendData1 = `data: ${bcvt +' Bs.'}\n\n`;
+        res.write(sendData1);
+})
+}
