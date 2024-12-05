@@ -17,9 +17,11 @@ childPython.stdout.on('data',(data)=>{
     // const tasabinance = data;
     tasabinance = `${data}`;
     bncv = tasabinance.trim();
+    launchinfo();
 
 })
 
+function launchinfo(){
 app.get ('/info5', (req, res) =>{
         res.setHeader('Content-Type', 'text/event-stream')
         res.setHeader('Access-Control-Allow-Origin', '*')
@@ -30,6 +32,7 @@ app.get ('/info5', (req, res) =>{
         res.write(sendData5);
         console.log(sendData5);
 })
+}
 
 
 // app.get ('/info5', (req, res) =>{
