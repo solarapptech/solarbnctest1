@@ -1,5 +1,6 @@
 var cors = require('cors')
 const express = require ('express')
+const moment = require('moment-timezone');
 const app = express ()
 let server = app.listen(8000);
 server.keepAliveTimeout = 80000;
@@ -8,6 +9,20 @@ app.use(cors())
 
 let tasabinance = 0;
 let bncv = 0;
+
+
+// Get the current time in Venezuela (VET timezone)
+let venezuelaTime = moment().tz('America/Caracas').format('YYYY-MM-DD HH:mm:ss');
+
+app.get ('/info3', (req, res) =>{
+      res.setHeader('Content-Type', 'text/event-stream')
+      res.setHeader('Access-Control-Allow-Origin', '*')
+       
+        const sendData3 = `data: ${JSON.stringify(venezuelaTime)}\n\n`
+        res.write(sendData3);
+       
+})
+
 
 const { spawn } = require('child_process');
 
