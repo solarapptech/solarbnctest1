@@ -6,26 +6,28 @@ server.keepAliveTimeout = 80000;
 server.headersTimeout = 81000;
 app.use(cors())
 
+let tasabinance = 0;
+let bncv = 0;
 
 const { spawn } = require('child_process');
 
 const childPython = spawn('python',['apibnc.py']);
 
 childPython.stdout.on('data',(data)=>{
-    // const tasabinance = data;
-    const tasabinance = `${data}`;
+    tasabinance = `${data}`;
+    bncv = tasabinance.trim();
+    launchinfo();
 })
 
-
+function launchinfo(){
 app.get ('/info5', (req, res) =>{
-    res.setHeader('Content-Type', 'text/event-stream')
-    res.setHeader('Access-Control-Allow-Origin', '*')
-
-    const sendData5 = `data: ${JSON.stringify(tasabinance) +' Bs.'}\n\n`;
-    console.log(sendData5);
-    // res.write(sendData5);
-
+        res.setHeader('Content-Type', 'text/event-stream')
+        res.setHeader('Access-Control-Allow-Origin', '*')
+    
+        const sendData5 = `data: ${bncv +' Bs.'}\n\n`;
+        res.write(sendData5);
 })
+}
 
 childPython.stderr.on('data',(data)=>{
     console.error(`stderr: ${data}`);
