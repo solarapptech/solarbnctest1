@@ -14,15 +14,13 @@ const moment = require('moment-timezone');
 require('moment/locale/es'); 
 
 moment.locale('es');  
-const venezuelaTime = moment().tz('America/Caracas').format('dddd, MMMM Do YYYY, hh:mm:ss A');
-
-let formattedDate = venezuelaTime.replace(/(\w+), (\d{2}) (\w{3,4}) (\d{4})/, '$1, $2 $3. $4');
+let venezuelaTime = moment().tz('America/Caracas').format('dddd, MMMM Do YYYY, hh:mm A');
 
 app.get ('/info3', (req, res) =>{
       res.setHeader('Content-Type', 'text/event-stream')
       res.setHeader('Access-Control-Allow-Origin', '*')
        
-        const sendData3 = `data: ${JSON.stringify(formattedDate)}\n\n`
+        const sendData3 = `data: ${JSON.stringify(venezuelaTime)}\n\n`
         res.write(sendData3);
        
 })
