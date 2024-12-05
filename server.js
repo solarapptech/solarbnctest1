@@ -14,7 +14,7 @@ const moment = require('moment-timezone');
 require('moment/locale/es'); 
 
 moment.locale('es');  
-let venezuelaTime = moment().tz('America/Caracas').format('dddd, MMMM Do YYYY, hh:mm A');
+let venezuelaTime = moment().tz('America/Caracas').format('dddd, MMMM Do YYYY, hh:mm:ss A');
 
 let formattedDate = venezuelaTime.replace(/(\w+), (\d+º) (\w+) (\d+)/, '$1, $2 $3 $4');
 
