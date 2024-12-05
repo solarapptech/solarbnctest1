@@ -12,7 +12,7 @@ let bncv = 0;
 
 
 // Get the current time in Venezuela (VET timezone)
-let venezuelaTime = moment().tz('America/Caracas').format('YYYY-MM-DD HH:mm:ss');
+let venezuelaTime = moment().tz('America/Caracas').format('YYYY-MM-DD HH:mm:ss A');
 
 app.get ('/info3', (req, res) =>{
       res.setHeader('Content-Type', 'text/event-stream')
