@@ -10,8 +10,8 @@ if response.status_code == 200:
     soup = BeautifulSoup(response.content, 'html.parser')
 
     # Clase específica
-    elementos = soup.find(class_='col-sm-6 col-xs-6 centrado')
+    elementos = soup.find_all(class_='col-sm-6 col-xs-6 centrado')
 
     # Iterar el elemento y extraer el texto
-    for elemento in elementos:
+    for elemento in elementos[4]:
         print(elemento.get_text())
