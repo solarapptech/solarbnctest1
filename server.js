@@ -7,6 +7,7 @@ server.headersTimeout = 81000;
 app.use(cors())
 
 let tasabinance = 0;
+let bncv = 0;
 
 const { spawn } = require('child_process');
 
