@@ -50,4 +50,3 @@ while True:
    # output = round(promedio,2)
    # sys.stdout.flush()
    time.sleep(5)
-print(7)
