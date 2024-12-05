@@ -16,11 +16,13 @@ require('moment/locale/es');
 moment.locale('es');  
 let venezuelaTime = moment().tz('America/Caracas').format('dddd, MMMM Do YYYY, hh:mm A');
 
+let formattedDate = venezuelaTime.replace(/(\w+), (\d+º) (\w+) (\d+)/, '$1, $2 $3 $4');
+
 app.get ('/info3', (req, res) =>{
       res.setHeader('Content-Type', 'text/event-stream')
       res.setHeader('Access-Control-Allow-Origin', '*')
        
-        const sendData3 = `data: ${JSON.stringify(venezuelaTime)}\n\n`
+        const sendData3 = `data: ${JSON.stringify(formattedDate)}\n\n`
         res.write(sendData3);
        
 })
