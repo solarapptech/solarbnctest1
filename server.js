@@ -12,6 +12,9 @@ let bncv = 0;
 let tasabcv = 0;
 let bcvt = 0;
 
+let tasaparalelo = 0;
+let paral = 0;
+
 
 const moment = require('moment-timezone'); 
 require('moment/locale/es'); 
@@ -49,16 +52,6 @@ app.get ('/info5', (req, res) =>{
 })
 }
 
-childPython.stderr.on('data',(data)=>{
-    console.error(`stderr: ${data}`);
-})
-
-childPython.on('close',(code)=>{
-    console.log(`Se ha cerrado con el codigo ${code}`);
-})
-
-
-
 const childPython2 = spawn('python',['bcvapi.py']);
 
 childPython2.stdout.on('data',(data)=>{
@@ -76,3 +69,23 @@ function launchinfo2(){
         res.write(sendData1);
 })
 }
+
+
+const childPython3 = spawn('python',['apiparalelo.py']);
+
+childPython3.stdout.on('data',(data)=>{
+    tasaparalelo = `${data}`;
+    paral = tasaparalelo.trim();
+    launchinfo3();
+})
+
+function launchinfo3(){
+    app.get ('/info2', (req, res) =>{
+        res.setHeader('Content-Type', 'text/event-stream')
+        res.setHeader('Access-Control-Allow-Origin', '*')
+    
+        const sendData2 = `data: ${paral +' Bs.'}\n\n`;
+        res.write(sendData2);
+})
+}
+
