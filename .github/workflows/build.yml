@@ -1,0 +1,24 @@
+name: Auto Commit
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+
+jobs:
+  auto-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Commit changes
+        run: |
+          git config --global user.email "solartech4756@gmail.com"
+          git config --global user.name "solar"
+          git add .
+          git commit -m "Automated commit"
+
+      - name: Push changes
+        run: |
+          git push origin main
