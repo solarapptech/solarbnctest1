@@ -81,7 +81,7 @@ price10 = float(result['data'][9]['adv']['price'])
 numeros = [price1, price2, price3, price4, price5, price6, price7, price8, price9, price10]
 promedio2 = sum(numeros) / len(numeros)
 
-array_1d = [promedio1,promedio2]
+array_1d = promedio1,promedio2
 print(array_1d)
 
 # print(asset, "<--->",fiat,round(promedio,2))
