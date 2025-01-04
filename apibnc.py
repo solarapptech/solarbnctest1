@@ -1,5 +1,6 @@
 import requests
 import json
+import numpy as np
 import sys
 
 data1 = {
@@ -44,7 +45,7 @@ numeros = [price1, price2, price3, price4, price5, price6, price7, price8, price
 
 promedio1 = sum(numeros) / len(numeros)
 
-print(round(promedio1,2))
+# print(round(promedio1,2))
 
 data2 = {
 "additionalKycVerifyFilter": 0,
@@ -82,7 +83,8 @@ price10 = float(result['data'][9]['adv']['price'])
 numeros = [price1, price2, price3, price4, price5, price6, price7, price8, price9, price10]
 promedio2 = sum(numeros) / len(numeros)
 
-print(round(promedio2,2))
+array_1d = np.array([promedio1,promedio2])
+print(array_1d)
 
 # print(asset, "<--->",fiat,round(promedio,2))
 
